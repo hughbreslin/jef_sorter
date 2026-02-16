@@ -1,7 +1,7 @@
 # jef_sorter
 A sorting utility for the Jeffrey Epstein Files
 
-This is meant as a starting point / example :) All scripts vibe coded with Gemini Fast.
+This is meant as a starting point / example :) All scripts vibe coded with Gemini Fast. It can be used to download and classify the documents.
 
 Use the 'efta_download.py' script to download the files - you must figure out the cookie yourself. Downloads are indexed using the .json file and it is advisable to skip large missing file sections to reduce requests.
 
@@ -13,6 +13,34 @@ Use the 'efta_analysis.py" script and the associated prompt file to classify doc
 
 ```python
 python efta_analysis.py ./docs ./prompt.md ./analysis
+```
+
+A sample output example for EFTA00000002.pdf
+
+```json
+{
+  "ownership": "Personal (Epstein)",
+  "date": "",
+  "source_evidence": "",
+  "doc_type": "Images",
+  "short_summary": "A photograph of a building entrance with ornate architectural details.",
+  "entities_identified": [],
+  "full_doc_summary": ""
+}
+```
+
+A sample output example for EFTA00030420.pdf_page_3
+
+```json
+{
+  "ownership": "State/Official",
+  "date": "04-12-2020",
+  "source_evidence": "Today our office is sending via FedEx a replacement drive for Ghislaine Maxwell, which should arrive at the MDC tomorrow. This drive will replace the drive that Maxwell recently dropped and broke, and the accompanying cover letters are attached.",
+  "doc_type": "Correspondence",
+  "short_summary": "A U.S. Attorney's Office email confirms sending a replacement drive for Ghislaine Maxwell via FedEx to the MDC.",
+  "entities_identified": ["Ghislaine Maxwell", "U.S. Attorney's Office, SDNY"],
+  "full_doc_summary": "The document is an email from the U.S. Attorney's Office in New York regarding the sending of a replacement drive for Ghislaine Maxwell via FedEx to the MDC (Manhattan District Court). The email mentions that this replaces a broken drive recently dropped by Maxwell and includes attached cover letters."
+}
 ```
 
 As a progression a more layered classification system could be used with different models. One to do an initial sort based on the first page of a doc to decide pictures or text or mix maybe and then subsequently the doc can be summarized by a more specialized prompt. I also need to check the image scaling to ensure this is good and maybe see if images could be passed together instead of separately in prompts as a single document - a classifier would help!
