@@ -15,7 +15,13 @@ Use the 'efta_analysis.py" script and the associated prompt file to classify doc
 python efta_analysis.py ./docs ./prompt.md ./analysis
 ```
 
-A sample output example for EFTA00000002.pdf
+Use the 'efta_faces.py" script to find all faces in the PDFs. This script will crop and associate all of the faces from the PDF files and create a report of what documents contain what face. This can be used to locate individuals within the documents, It will also crop all images into subfolders to be checked easily.
+
+```python
+python efta_faces.py ./docs ./faces
+```
+
+A sample output example running the analysis script for EFTA00000002.pdf
 
 ```json
 {
@@ -29,7 +35,7 @@ A sample output example for EFTA00000002.pdf
 }
 ```
 
-A sample output example for EFTA00030420.pdf_page_3
+A sample output example running the analysis script for EFTA00030420.pdf_page_3
 
 ```json
 {
